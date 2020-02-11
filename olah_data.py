@@ -10,7 +10,7 @@ from sklearn.model_selection import KFold
 from PyEMD import EMD, EEMD
 
 #setting
-data_input_filename = 'timeseries_tj_selor'
+data_input_filename = 'timeseries_tarakan'
 
 def hann(total_data):
 	hann_array = np.zeros(total_data)
@@ -49,10 +49,10 @@ print(len(EIMFs))
 print(np.shape(data_input), np.shape(EIMFs))
 
 #plot
-#for i in range(len(EIMFs)):
-#	plt.subplot(len(EIMFs), 1, i+1)
-#	plt.plot(np.arange(len(data_input)), EIMFs[i], '-', lw=2)
-#plt.show()
+for i in range(len(EIMFs)):
+	plt.subplot(len(EIMFs), 1, i+1)
+	plt.plot(np.arange(len(data_input)), EIMFs[i], '-', lw=2)
+plt.show()
 
 
 #FFT
@@ -66,8 +66,8 @@ fftdatafreq = np.zeros((len(data_input)))
 for i in range(len(fftdata)):
 	fftdatafreq[i] = abs(fftdata[i].real)
 
-plt.ylabel("Amplitude")
-plt.xlabel("Frequency")
-plt.plot(time[:len(fftdatafreq) // 2], fftdatafreq[:len(fftdatafreq) // 2])
+#plt.ylabel("Amplitude")
+#plt.xlabel("Frequency")
+#plt.plot(time[:len(fftdatafreq) // 2], fftdatafreq[:len(fftdatafreq) // 2])
 
-plt.show()
+#plt.show()
