@@ -10,7 +10,7 @@ from sklearn.model_selection import KFold
 from PyEMD import EMD, EEMD
 
 #setting
-data_input_filename = 'timeseries_tarakan'
+data_input_filename = 'timeseries_tj_selor'
 
 def hann(total_data):
 	hann_array = np.zeros(total_data)
@@ -49,11 +49,20 @@ print(len(EIMFs))
 print(np.shape(data_input), np.shape(EIMFs))
 
 #plot
-for i in range(len(EIMFs)):
-	plt.subplot(len(EIMFs), 1, i+1)
-	plt.plot(np.arange(len(data_input)), EIMFs[i], '-', lw=2)
-plt.show()
+#for i in range(len(EIMFs)):
+#	plt.subplot(len(EIMFs), 1, i+1)
+#	plt.plot(np.arange(len(data_input)), EIMFs[i], '-', lw=2)
+#plt.show()
 
+#rata-rata hujan
+rata_hujan = np.reshape(data_input, (12, -1))
+rata_hujan = np.mean(rata_hujan, axis=1)
+print(np.shape(rata_hujan))
+
+plt.ylabel("Curah Hujan")
+plt.xlabel("Bulan")
+plt.plot(np.arange(12)+1, rata_hujan)
+plt.show()
 
 #FFT
 
@@ -71,3 +80,4 @@ for i in range(len(fftdata)):
 #plt.plot(time[:len(fftdatafreq) // 2], fftdatafreq[:len(fftdatafreq) // 2])
 
 #plt.show()
+
